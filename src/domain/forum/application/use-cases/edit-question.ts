@@ -1,3 +1,5 @@
+import { Injectable } from "@nestjs/common";
+
 import { Either, left, right } from "@/core/either";
 import { UniqueEntityID } from "@/core/entities/unique-entity-id";
 import { NotAllowedError } from "@/core/errors/errors/not-allowed-error";
@@ -10,20 +12,21 @@ import { QuestionAttachmentList } from "@/domain/forum/enterprise/entities/quest
 import { QuestionsRepository } from "../repositories/questions-repository";
 
 interface EditQuestionUseCaseRequest {
-  authorId: string
-  questionId: string
-  title: string
-  content: string
-  attachmentsIds: string[]
+  authorId: string;
+  questionId: string;
+  title: string;
+  content: string;
+  attachmentsIds: string[];
 }
 
 type EditQuestionUseCaseResponse = Either<
   ResourceNotFoundError | NotAllowedError,
   {
-    question: Question
+    question: Question;
   }
->
+>;
 
+@Injectable()
 export class EditQuestionUseCase {
   constructor(
     private questionsRepository: QuestionsRepository,
@@ -50,9 +53,7 @@ export class EditQuestionUseCase {
     const currentQuestionAttachments =
       await this.questionAttachmentsRepository.findManyByQuestionId(questionId);
 
-    const questionAttachmentList = new QuestionAttachmentList(
-      currentQuestionAttachments,
-    );
+    const questionAttachmentList = new QuestionAttachmentList(currentQuestionAttachments);
 
     const questionAttachments = attachmentsIds.map((attachmentId) => {
       return QuestionAttachment.create({

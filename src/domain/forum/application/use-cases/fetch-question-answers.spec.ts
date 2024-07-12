@@ -11,8 +11,7 @@ let sut: FetchQuestionAnswersUseCase;
 
 describe("Fetch Question Answers", () => {
   beforeEach(() => {
-    inMemoryAnswerAttachmentsRepository =
-      new InMemoryAnswerAttachmentsRepository();
+    inMemoryAnswerAttachmentsRepository = new InMemoryAnswerAttachmentsRepository();
     inMemoryAnswersRepository = new InMemoryAnswersRepository(
       inMemoryAnswerAttachmentsRepository,
     );
