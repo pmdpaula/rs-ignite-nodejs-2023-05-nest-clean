@@ -15,6 +15,7 @@ Nesse módulo de NestJS você irá aprender os conceitos principais do framework
 - Docker
 - Postgres
 - JWT (Nest/Passport)
+- NestJs/Multer (upload de arquivos)
 
 
 ## JWT
