@@ -24,6 +24,7 @@ export default [
       'linebreak-style': ['error', 'unix'],
       'quotes': ['error', 'double'],
       'semi': ['error', 'always'],
+      'no-unused-vars': 'warn',
       // "sort-imports": ["warn", {
       //   "ignoreCase": false,
       //   "ignoreDeclarationSort": false,
